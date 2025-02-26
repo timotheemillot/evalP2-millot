@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Créer une application</h1>
+  <form id="form-creation" class="form-creation" ngNativeValidate (ngSubmit)="onFormSubmit()">
+    <label for="nom">Nom de l'application :</label>
+    <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" id="nom" name="nom" required >
+
+    <select [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+      <option value="1">Grand public</option>
+      <option value="2">Professionel</option>
+    </select>
+
+    <button type="submit" class="btn ajouter">Créer l'application</button>
+  </form>
+</div>

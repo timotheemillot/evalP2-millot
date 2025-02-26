@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool type { get; set; } // 0 : Grand public / 1 : Professionnelle
+        public bool Type { get; set; } // 0 : Grand public / 1 : Professionnelle
 
     }
 }

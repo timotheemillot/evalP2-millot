@@ -19,7 +19,9 @@ namespace API_Eval_P2.Services.Passwords
 
         public async Task<Password> GetPasswordByIdAsync(int id)
         {
-            return await this._context.Passwords.FindAsync(id);
+            return await this._context.Passwords
+                                      .Include(p => p.Application) 
+                                      .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task CreatePasswordAsync(Password application)

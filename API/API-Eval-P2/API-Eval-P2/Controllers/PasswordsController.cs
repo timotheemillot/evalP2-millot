@@ -1,4 +1,5 @@
 ﻿using API_Eval_P2.Models;
+using API_Eval_P2.NewFolder;
 using API_Eval_P2.Repositories;
 using API_Eval_P2.Services.Passwords;
 using Microsoft.AspNetCore.Http;
@@ -11,12 +12,15 @@ namespace API_Eval_P2.Controllers
     public class PasswordsController : ControllerBase
     {
         private readonly IRepository<Password> _passwordRepository;
+        private readonly IRepository<Application> _applicationRepository;
 
-        public PasswordsController(IRepository<Password> passwordRepository)
+        public PasswordsController(IRepository<Password> passwordRepository, IRepository<Application> applicationRepository)
         {
             _passwordRepository = passwordRepository;
+            _applicationRepository = applicationRepository;
         }
 
+        [ApiKey]
         [HttpGet]
         public async Task<IEnumerable<Password>> GetAll()
         {
@@ -30,9 +34,19 @@ namespace API_Eval_P2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Password password)
+        public async Task<IActionResult> Create([FromBody] Password password)
         {
+           
+            var application = await _applicationRepository.GetByIdAsync(password.Application.Id);
+
+            if (application == null)
+            {
+                return BadRequest("Invalid Application ID.");
+            }
+            password.Application = application;
+
             await _passwordRepository.AddAsync(password);
+
             return StatusCode(StatusCodes.Status201Created);
         }
 

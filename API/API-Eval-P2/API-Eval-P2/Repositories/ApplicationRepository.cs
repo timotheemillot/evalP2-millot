@@ -26,7 +26,7 @@ namespace API_Eval_P2.Repositories
             return _applicationsService.GetApplicationsAsync();
         }
 
-        public Task<Application?> GetByIdAsync(int id)
+        public Task<Application> GetByIdAsync(int id)
         {
             return _applicationsService.GetApplicationByIdAsync(id);
         }

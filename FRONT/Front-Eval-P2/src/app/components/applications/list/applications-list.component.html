@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Liste des applications</h1>
+  <button type="button" class="btn ajouter" routerLink="/applications/create">+ Ajouter une application</button>
+  <table>
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Type</th>
+    </tr>
+    </thead>
+    <tbody id="tableau-objets">
+        <tr *ngFor="let app of applications">
+          <td>
+            {{ app.name }}
+          </td>
+          <td>
+            {{ app.type ? 'Grand public' : 'Professionnel' }}
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

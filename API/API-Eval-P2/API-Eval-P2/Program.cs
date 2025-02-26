@@ -1,5 +1,6 @@
 using API_Eval_P2;
 using API_Eval_P2.Models;
+using API_Eval_P2.NewFolder;
 using API_Eval_P2.Repositories;
 using API_Eval_P2.Services.Applications;
 using API_Eval_P2.Services.Passwords;
@@ -25,7 +26,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -33,6 +46,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//app.UseMiddleware<ApiKeyMiddleware>();
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 

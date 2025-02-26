@@ -16,6 +16,7 @@ namespace API_Eval_P2.Controllers
         }
 
         [HttpGet]
+
         public async Task<IEnumerable<Application>> GetAll()
         {
             return await _applicationRepository.GetAllAsync();
@@ -28,7 +29,7 @@ namespace API_Eval_P2.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Application application)
+        public async Task<IActionResult> Create([FromBody] Application application)
         {
             await _applicationRepository.AddAsync(application);
             return StatusCode(StatusCodes.Status201Created);
