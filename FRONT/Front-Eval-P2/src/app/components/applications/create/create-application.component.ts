@@ -12,10 +12,13 @@ import {FormsModule} from '@angular/forms';
   standalone: true,
   styleUrl: './create-application.component.css'
 })
+
+// Création d’une application
 export class CreateApplicationComponent {
 
   name: string = '';
-  type: boolean = false;
+  type: number = 0;
+  typeBoolean: boolean = false;
 
 
 
@@ -24,10 +27,12 @@ export class CreateApplicationComponent {
 
   onFormSubmit() {
 
+    this.type == 0 ? this.typeBoolean = false : this.typeBoolean = true;
+
     let application = new Application(
       0,
       this.name,
-      this.type
+      this.typeBoolean
     );
 
     this.applicationService.createApplication(application).subscribe({

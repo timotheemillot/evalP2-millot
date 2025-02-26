@@ -14,6 +14,8 @@ import {Password} from '../../../models/password';
   standalone: true,
   styleUrl: './passwords-list.component.css'
 })
+
+// Affichage des mots de passe stockés sous forme de liste avec un bouton "Supprimer"
 export class PasswordsListComponent {
   constructor(private passwordsService: PasswordsService) {
     this.loadPasswords();

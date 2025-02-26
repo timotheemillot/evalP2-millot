@@ -10,6 +10,8 @@ import {ApplicationsListComponent} from './list/applications-list.component';
   standalone: true,
   styleUrl: './applications.component.css'
 })
+
+// Affichage des applications disponibles et possibilité d’en ajouter
 export class ApplicationsComponent {
 
 }

@@ -14,6 +14,8 @@ import {NgForOf} from '@angular/common';
   standalone: true,
   styleUrl: './applications-list.component.css'
 })
+
+//Affichage des applications disponibles
 export class ApplicationsListComponent {
 
   constructor(private applicationService: ApplicationsService) {
