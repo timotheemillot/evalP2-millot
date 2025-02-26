@@ -3,6 +3,8 @@ using API_Eval_P2.Models;
 using API_Eval_P2.NewFolder;
 using API_Eval_P2.Repositories;
 using API_Eval_P2.Services.Applications;
+using API_Eval_P2.Services.Encryption;
+using API_Eval_P2.Services.Encryption.Strategies;
 using API_Eval_P2.Services.Passwords;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,8 +18,12 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IEncryptionStrategy, AesEncryptionStrategy>();
+builder.Services.AddScoped<IEncryptionStrategy, RsaEncryptionStrategy>();
+builder.Services.AddScoped<IEncryptionService, EncryptionService>();
 builder.Services.AddScoped<IApplicationsService, ApplicationsService>();
 builder.Services.AddScoped<IPasswordsService, PasswordsService>();
+
 
 builder.Services.AddScoped<IRepository<Application>, ApplicationRepository>();
 builder.Services.AddScoped<IRepository<Password>, PasswordRepository>();

@@ -23,7 +23,6 @@ export class ApplicationsService {
   }
 
   createApplication(application : Application) {
-    application.type ? application.type = true : application.type = false;
     return this.httpClient.post<Application>(this.url, application, {
       headers: {
         'Content-Type': 'application/json',

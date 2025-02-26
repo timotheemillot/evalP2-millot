@@ -26,13 +26,13 @@ namespace API_Eval_P2.Controllers
         {
             return await _passwordRepository.GetAllAsync();
         }
-
+        [ApiKey]
         [HttpGet("{id}")]
         public async Task<Password?> GetById(int id)
         {
             return await _passwordRepository.GetByIdAsync(id);
         }
-
+        [ApiKey]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Password password)
         {
@@ -49,7 +49,7 @@ namespace API_Eval_P2.Controllers
 
             return StatusCode(StatusCodes.Status201Created);
         }
-
+        [ApiKey]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

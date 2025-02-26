@@ -1,15 +1,15 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import {environment} from '../environnement.developpement';
 
 export const apiKeyInterceptor: HttpInterceptorFn = (req, next) => {
 
 
+  // Mise en place d’un service HTTP avec la clé d’API (incluse dans le header)
   req = req.clone({
     setHeaders: {
-    'xapikey' : `nCSz8vg4if3TAH5IbVkRrbPWikEbf88c`
+    'xapikey' : environment.apiKey
     }
   });
-
-  console.log(req);
 
   return next(req);
 };
