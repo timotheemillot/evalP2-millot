@@ -12,6 +12,10 @@ Le projet est divisé en deux parties :
 
 ---
 
+LE PROJET EST TERMINE ET TOUTES LES FONCTIONNALITES DEMANDEES ONT ETE IMPLEMENTEES
+
+---
+
 ## Prérequis
 
 Avant de commencer, assurez-vous d'avoir installé les outils suivants :
